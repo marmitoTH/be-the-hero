@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import { shade, lighten } from 'polished'
 import { FiLogIn } from 'react-icons/fi'
 import heroes from '../../assets/images/heroes.png'
@@ -45,7 +46,6 @@ export const Title = styled.h1`
 export const Form = styled.form``
 
 export const Input = styled.input`
-  display: block;
   width: 100%;
   max-height: 6rem;
   color: #41414D;
@@ -91,7 +91,7 @@ export const RegisterIcon = styled(FiLogIn)`
   margin-right: 1.9rem;
 `
 
-export const Register = styled.a`
+export const Register = styled(Link)`
   color: #41414D;
   font-size: 1.8rem;
   font-weight: bold;

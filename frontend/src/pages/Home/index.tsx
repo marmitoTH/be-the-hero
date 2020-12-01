@@ -26,7 +26,7 @@ const Home: React.FC = () => {
         </Form>
         <RegisterContainer>
           <RegisterIcon />
-          <Register href='/cadastrar'>Não tenho cadastro</Register>
+          <Register to='/cadastrar'>Não tenho cadastro</Register>
         </RegisterContainer>
       </Main>
     </Container>
