@@ -13,11 +13,16 @@ export default createGlobalStyle`
   }
 
   body {
+    min-height: 100vh;
     background: #F0F0F5;
   }
 
+  button {
+    cursor: pointer;
+  }
+
   body, input, text-area {
-    font: 1rem 'Roboto', sans-serif;
+    font: 400 1rem 'Roboto', sans-serif;
   }
 
   @media (min-width: 1000px) {
