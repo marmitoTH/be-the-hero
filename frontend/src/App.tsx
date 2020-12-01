@@ -1,13 +1,13 @@
 import React from 'react'
-
+import Home from './pages/Home/index'
 import GlobalStyles from './assets/styles/global'
 
 export const App: React.FC = () => {
   return (
-    <div className="App">
-      Hello World!
+    <>
+      <Home />
       <GlobalStyles />
-    </div>
+    </>
   )
 }
 
