@@ -1,10 +1,12 @@
 import React from 'react'
 import { Button as Btn } from './styles'
 
-type Props = React.ButtonHTMLAttributes<HTMLButtonElement>
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  secondary?: boolean
+}
 
-const Button: React.FC<Props> = ({ children, ...rest }) => (
-  <Btn {...rest}>{children}</Btn>
+const Button: React.FC<Props> = ({ children, secondary, ...rest }) => (
+  <Btn secondary={secondary || false} {...rest}>{children}</Btn>
 )
 
 export default Button

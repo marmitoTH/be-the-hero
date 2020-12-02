@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { shade } from 'polished'
 
-export const Button = styled.button`
+export const Button = styled.button<{ secondary: boolean }>`
   width: 100%;
   height: 6rem;
   color: #F0F0F5;
@@ -14,4 +14,14 @@ export const Button = styled.button`
   :hover {
     background: ${shade(0.15, '#E02041')};
   }
+
+  ${props => props.secondary && css`
+    color: #41414D;
+    background: none;
+    border: .25rem solid #DCDCE6;
+
+    :hover {
+      background: ${shade(0.1, '#EFEFEF')};
+    }
+  `}
 `

@@ -21,7 +21,7 @@ export default createGlobalStyle`
     cursor: pointer;
   }
 
-  body, input, text-area {
+  body, input, textarea {
     font: 400 1rem 'Roboto', sans-serif;
   }
 

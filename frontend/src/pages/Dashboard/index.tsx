@@ -37,6 +37,7 @@ const Dashboard: React.FC = () => {
         <Case />
         <Case />
         <Case />
+        <Case />
       </List>
     </Container>
   )
