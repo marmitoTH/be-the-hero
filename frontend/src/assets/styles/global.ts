@@ -9,7 +9,7 @@ export default createGlobalStyle`
   }
 
   :root {
-    font-size: 55%;
+    font-size: 50%;
   }
 
   body {
