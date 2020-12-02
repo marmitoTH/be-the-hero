@@ -16,10 +16,6 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   width: 100%;
 
-  a {
-    margin: 2rem 0;
-  }
-
   @media (min-width: 1000px) {
     display: flex;
     justify-content: space-between;
@@ -27,10 +23,6 @@ export const Wrapper = styled.div`
     background: #F0F0F5;
     box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-
-    a {
-      margin-top: 8.4rem;
-    }
   }
 `
 
@@ -83,5 +75,13 @@ export const Description = styled.p`
   @media (min-width: 1000px) {
     max-width: 38.4rem;
     text-align: left;
+  }
+`
+
+export const AnchorContainer = styled.div`
+  margin: 1rem 0 3rem 0;
+
+  @media (min-width: 1000px) {
+    margin-top: 8rem;
   }
 `

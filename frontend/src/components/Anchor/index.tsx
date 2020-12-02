@@ -1,14 +1,17 @@
 import React from 'react'
 import { LinkProps } from 'react-router-dom'
-import { Link } from './styles'
-import { } from 'react-icons/fi'
+import { IconBaseProps } from 'react-icons'
+import { Container, Link } from './styles'
 
-type Props = LinkProps
+interface Props extends LinkProps {
+  icon?: React.ComponentType<IconBaseProps>
+}
 
-const Anchor: React.FC<Props> = ({ children, ...rest }) => (
-  <>
+const Anchor: React.FC<Props> = ({ children, icon: Icon, style, ...rest }) => (
+  <Container style={style}>
+    {Icon && <Icon />}
     <Link {...rest}>{children}</Link>
-  </>
+  </Container>
 )
 
 export default Anchor

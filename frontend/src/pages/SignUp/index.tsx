@@ -1,4 +1,5 @@
 import React from 'react'
+import { FiArrowLeft } from 'react-icons/fi'
 import Button from '../../components/Button'
 import TextField from '../../components/TextField'
 import Anchor from '../../components/Anchor'
@@ -11,7 +12,8 @@ import {
   Form,
   Logo,
   Title,
-  Description
+  Description,
+  AnchorContainer
 } from './styles'
 
 const SignUp: React.FC = () => {
@@ -22,7 +24,9 @@ const SignUp: React.FC = () => {
           <Logo src={logo} alt='Be The Hero Logo' />
           <Title>Cadastro</Title>
           <Description>Faça seu cadastro, entre na plataforma e ajude pessoas a encontrarem os casos da sua ONG.</Description>
-          <Anchor to='/'>Voltar para o logon</Anchor>
+          <AnchorContainer>
+            <Anchor to='/' icon={FiArrowLeft}>Voltar para o logon</Anchor>
+          </AnchorContainer>
         </Main>
         <Form>
           <TextField placeholder='Nome da ONG' />

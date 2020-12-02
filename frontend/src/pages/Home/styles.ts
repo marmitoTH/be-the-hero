@@ -1,7 +1,4 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import { shade, lighten } from 'polished'
-import { FiLogIn } from 'react-icons/fi'
 import heroes from '../../assets/images/heroes.png'
 
 export const Container = styled.div`
@@ -43,62 +40,17 @@ export const Title = styled.h1`
   }
 `
 
-export const Form = styled.form``
-
-export const Input = styled.input`
-  width: 100%;
-  max-height: 6rem;
-  color: #41414D;
-  font-size: 1.8rem;
-  padding: 2.4rem 1.8rem;
-  border-radius: .8rem;
-  border: .15rem solid #DCDCE6;
-
-  ::placeholder {
-    color: #A8A8B3;
-  }
-`
-
-export const Button = styled.button`
-  width: 100%;
-  height: 6rem;
-  color: #F0F0F5;
-  font-size: 1.8rem;
-  font-weight: bold;
-  background: #E02041;
-  border-radius: .8rem;
-  margin: 1.5rem 0 4rem 0;
-  transition: background 200ms;
-
-  :hover {
-    background: ${shade(0.15, '#E02041')};
+export const Form = styled.form`
+  button {
+    margin: 1.5rem 0 4rem 0;
   }
 `
 
 export const RegisterContainer = styled.div`
   display: flex;
-  align-items: center;
   justify-content: center;
 
   @media (min-width: 1000px) {
     justify-content: flex-start;
-  }
-`
-
-export const RegisterIcon = styled(FiLogIn)`
-  color: #E02041;
-  font-size: 1.8rem;
-  margin-right: 1.9rem;
-`
-
-export const Register = styled(Link)`
-  color: #41414D;
-  font-size: 1.8rem;
-  font-weight: bold;
-  text-decoration: none;
-  transition: color 200ms;
-
-  :hover {
-    color: ${lighten(0.15, '#41414D')};
   }
 `
