@@ -12,6 +12,11 @@ class OngRepository implements IOngsRepository {
     const repository = getRepository(Ong)
     return await repository.save(ong)
   }
+
+  public async findByID(id: string): Promise<Ong | undefined> {
+    const repository = getRepository(Ong)
+    return await repository.findOne({ where: { id } })
+  }
 }
 
 export default OngRepository
