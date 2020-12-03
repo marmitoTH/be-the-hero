@@ -12,7 +12,7 @@ class IndexIncidents {
       incident.ong.id = ''
     })
 
-    return incidents
+    return { incidents, total: incidents.length }
   }
 }
 

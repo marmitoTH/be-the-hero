@@ -34,6 +34,11 @@ class IncidentsRepository implements IIncidentsRepository {
     const repository = getRepository(Incident)
     return await repository.save(incident)
   }
+
+  public async findByOngID(id: string): Promise<Incident[]> {
+    const repository = getRepository(Incident)
+    return await repository.find({ where: { ong: { id } } })
+  }
 }
 
 export default IncidentsRepository

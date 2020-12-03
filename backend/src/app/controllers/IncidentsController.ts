@@ -4,6 +4,7 @@ import IncidentsRepository from '../repositories/typeorm/IncidentsRepository'
 import CreateIncident from '../services/CreateIncident'
 import IndexIncidents from '../services/IndexIncidents'
 import DeleteIncident from '../services/DeleteIncident'
+import IndexOngIncidents from '../services/IndexOngIncidents'
 
 class IncidentsController {
   public async createIncident(request: Request, response: Response) {
@@ -29,6 +30,16 @@ class IncidentsController {
     const service = new IndexIncidents(repository)
 
     await service.execute().then(incidents => {
+      return response.status(200).json(incidents)
+    })
+  }
+
+  public async indexOngIncidents(request: Request, response: Response) {
+    const repository = new IncidentsRepository
+    const service = new IndexOngIncidents(repository)
+    const { id } = request.user
+
+    await service.execute({ ong_id: id }).then(incidents => {
       return response.status(200).json(incidents)
     })
   }
