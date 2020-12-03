@@ -23,7 +23,7 @@ class Incident {
   @Column()
   value: number
 
-  @ManyToOne(() => Ong)
+  @ManyToOne(() => Ong, { eager: true })
   @JoinColumn({ name: 'ong_id' })
   ong: Ong
 

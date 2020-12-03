@@ -13,6 +13,6 @@ router.post('/ongs', OngController.createOng)
 
 router.get('/incidents', IncidentsController.indexIncidents)
 router.post('/incidents', auth, IncidentsController.createIncident)
-router.delete('/incidents/:id', auth, IncidentsController.DeleteIncidents)
+router.delete('/incidents', auth, IncidentsController.DeleteIncidents)
 
 export default router

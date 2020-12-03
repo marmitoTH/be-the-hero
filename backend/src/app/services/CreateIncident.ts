@@ -1,8 +1,11 @@
-import Incident from '../models/Incident'
-import IIncidentsRepository from '../repositories/IIncidentsRepository'
 import { v4 as uuidv4 } from 'uuid'
+import Incident from '../models/Incident'
+import IOngsRepository from '../repositories/IOngsRepository'
+import IIncidentsRepository from '../repositories/IIncidentsRepository'
+import ServiceError from '../exceptions/ServiceError'
 
 interface DTO {
+  ong_id: string
   title: string
   description: string
   value: number
@@ -10,20 +13,29 @@ interface DTO {
 
 class CreateIncident {
   constructor(
-    private repository: IIncidentsRepository
+    private incidentsRepository: IIncidentsRepository,
+    private ongsRepository: IOngsRepository
   ) { }
 
   public async execute(data: DTO): Promise<Incident> {
+    const { ong_id, title, description, value } = data
+    const ong = await this.ongsRepository.findByID(ong_id)
     const id = uuidv4()
-    const { title, description, value } = data
-    const incident = this.repository.create({
+
+    if (!ong) {
+      throw new ServiceError('Invalid ong ID')
+    }
+
+    const incident = this.incidentsRepository.create({
       id,
       title,
       description,
-      value
+      value,
+      ong
     })
 
-    //await this.repository.save(incident)
+    await this.incidentsRepository.save(incident)
+
     return incident
   }
 }

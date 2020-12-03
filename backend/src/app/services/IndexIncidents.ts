@@ -6,7 +6,13 @@ class IndexIncidents {
   ) { }
 
   public async execute() {
-    return await this.repository.index()
+    const incidents = await this.repository.index()
+
+    incidents.forEach(incident => {
+      incident.ong.id = ''
+    })
+
+    return incidents
   }
 }
 

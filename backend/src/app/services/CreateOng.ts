@@ -27,7 +27,7 @@ class CreateOng {
       uf
     })
 
-    //await this.repository.save(ong)
+    await this.repository.save(ong)
 
     return ong
   }
