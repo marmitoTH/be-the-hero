@@ -2,8 +2,12 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryColumn
-} from "typeorm"
+} from 'typeorm'
+
+import Ong from './Ong'
 
 @Entity('incidents')
 class Incident {
@@ -18,6 +22,10 @@ class Incident {
 
   @Column()
   value: number
+
+  @ManyToOne(() => Ong)
+  @JoinColumn({ name: 'ong_id' })
+  ong: Ong
 
   @CreateDateColumn()
   created_at: Date
