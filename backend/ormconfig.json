@@ -4,5 +4,14 @@
   "port": 5432,
   "username": "postgres",
   "password": "admin",
-  "database": "be-the-hero"
+  "database": "be-the-hero",
+  "entities": [
+    "src/app/models/*.ts"
+  ],
+  "migrations": [
+    "src/database/migrations/*.ts"
+  ],
+  "cli": {
+    "migrationsDir": "src/database/migrations"
+  }
 }
