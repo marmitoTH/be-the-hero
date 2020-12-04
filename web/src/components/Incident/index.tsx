@@ -9,7 +9,7 @@ import {
   Delete
 } from './styles'
 
-const Case: React.FC = () => (
+const Incident: React.FC = () => (
   <Container>
     <Section>
       <Title>CASO:</Title>
@@ -29,4 +29,4 @@ const Case: React.FC = () => (
   </Container>
 )
 
-export default Case
+export default Incident

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { FiPower } from 'react-icons/fi'
 import logo from '../../assets/images/logo.svg'
-import Case from '../../components/Case'
+import Incident from '../../components/Incident'
 import { useAuth } from '../../hooks/auth'
 import api from '../../services/api'
 
@@ -85,7 +85,7 @@ const Dashboard: React.FC = () => {
       <Title>Casos cadastrados</Title>
       <List>
         {incidents?.incidents.map((data, key) => (
-          <Case />
+          <Incident key={key} />
         ))}
       </List>
     </Container>
