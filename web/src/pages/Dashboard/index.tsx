@@ -60,10 +60,27 @@ const Dashboard: React.FC = () => {
     }).catch(() => { })
   }, [token])
 
-  useEffect(() => {
+  const loadData = useCallback(() => {
     fetchOng()
     fetchIncidents()
   }, [fetchOng, fetchIncidents])
+
+  const deleteIncident = useCallback(async (id: string) => {
+    await api.delete('/incidents', {
+      data: {
+        id
+      },
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    }).then(() => {
+      loadData()
+    })
+  }, [token, loadData])
+
+  useEffect(() => {
+    loadData()
+  }, [loadData])
 
   return (
     <Container>
@@ -90,7 +107,9 @@ const Dashboard: React.FC = () => {
             title={data.title}
             description={data.description}
             value={data.value}
-            onDelete={() => { }}
+            onDelete={() => {
+              deleteIncident(data.id)
+            }}
           />
         ))}
       </List>

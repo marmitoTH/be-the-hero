@@ -35,6 +35,7 @@ const Register: React.FC = () => {
 
   const onSubmit = useCallback(async (data: FormData) => {
     const { title, description, value } = data
+
     await api.post('/incidents', {
       title,
       description,
