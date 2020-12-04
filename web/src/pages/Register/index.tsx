@@ -1,4 +1,5 @@
 import React from 'react'
+//import { useForm } from 'react-hook-form'
 import { FiArrowLeft } from 'react-icons/fi'
 import Anchor from '../../components/Anchor'
 import TextField from '../../components/TextField'
@@ -19,6 +20,8 @@ import {
 } from './styles'
 
 const Register: React.FC = () => {
+  //const {register, handleSubmit} = useForm()
+
   return (
     <Container>
       <Wrapper>
