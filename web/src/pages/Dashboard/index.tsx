@@ -85,7 +85,13 @@ const Dashboard: React.FC = () => {
       <Title>Casos cadastrados</Title>
       <List>
         {incidents?.incidents.map((data, key) => (
-          <Incident key={key} />
+          <Incident
+            key={key}
+            title={data.title}
+            description={data.description}
+            value={data.value}
+            onDelete={() => { }}
+          />
         ))}
       </List>
     </Container>

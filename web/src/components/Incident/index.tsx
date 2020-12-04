@@ -9,21 +9,32 @@ import {
   Delete
 } from './styles'
 
-const Incident: React.FC = () => (
+interface Props {
+  title: string
+  description: string
+  value: number
+
+  onDelete(): void
+}
+
+const Incident: React.FC<Props> = (props) => (
   <Container>
     <Section>
       <Title>CASO:</Title>
-      <Text>Cadelinha atropelada</Text>
+      <Text>{props.title}</Text>
     </Section>
     <Section>
       <Title>Descrição:</Title>
-      <Text>A cadelinha Jolie foi atropelada por um carro no bairro Santana e teve que passar por uma cirurgia às pressas.</Text>
+      <Text>{props.description}</Text>
     </Section>
     <Section>
       <Title>Valor:</Title>
-      <Text>R$ 120,00 reais</Text>
+      <Text>{props.value}</Text>
     </Section>
-    <Delete type='button'>
+    <Delete
+      type='button'
+      onClick={() => props.onDelete()}
+    >
       <FiTrash2 />
     </Delete>
   </Container>
