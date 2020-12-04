@@ -18,7 +18,7 @@ import {
 } from './styles'
 
 const Dashboard: React.FC = () => {
-  const { signOut } = useAuth()
+  const { signOut, ong } = useAuth()
 
   return (
     <Container>

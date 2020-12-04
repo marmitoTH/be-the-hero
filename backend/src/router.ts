@@ -9,6 +9,7 @@ const router = Router()
 
 router.post('/sessions', SessionsController.createSession)
 
+router.get('/ongs', auth, OngController.getOng)
 router.post('/ongs', OngController.createOng)
 
 router.get('/incidents', IncidentsController.indexIncidents)
