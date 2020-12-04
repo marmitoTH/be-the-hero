@@ -7,7 +7,6 @@ import React, {
 import api from '../services/api'
 
 interface IAuthContext {
-  ong: object
   token: string
 
   signIn(id: string): Promise<void>
@@ -15,7 +14,6 @@ interface IAuthContext {
 }
 
 interface IAuth {
-  ong: object
   token: string
 }
 
@@ -24,13 +22,9 @@ const AuthContext = createContext<IAuthContext>({} as IAuthContext)
 const AuthProvider: React.FC = ({ children }) => {
   const [auth, setAuth] = useState<IAuth>(() => {
     const token = localStorage.getItem('@be-the-hero/token')
-    const ong = localStorage.getItem('@be-the-hero/ong')
 
-    if (token && ong) {
-      return {
-        token,
-        ong: JSON.parse(ong)
-      }
+    if (token) {
+      return { token }
     }
 
     return {} as IAuth
@@ -39,26 +33,22 @@ const AuthProvider: React.FC = ({ children }) => {
   const signIn = async (id: string) => {
     await api.post('/sessions', { id })
       .then(response => {
-        const { token, ong } = response.data
+        const { token } = response.data
 
         localStorage.setItem('@be-the-hero/token', token)
-        localStorage.setItem('@be-the-hero/ong', JSON.stringify(ong))
 
-        setAuth({ token, ong })
+        setAuth({ token })
       })
   }
 
   const signOut = () => {
     localStorage.removeItem('@be-the-hero/token')
-    localStorage.removeItem('@be-the-hero/ong')
-
     setAuth({} as IAuth)
   }
 
   return (
     <AuthContext.Provider value={{
       token: auth.token,
-      ong: auth.ong,
       signIn,
       signOut
     }}>

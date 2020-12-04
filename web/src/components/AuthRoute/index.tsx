@@ -14,13 +14,13 @@ const AuthRoute: React.FC<Props> = ({
   component: Component,
   ...rest
 }) => {
-  const { ong } = useAuth()
+  const { token } = useAuth()
 
   return (
     <Route
       {...rest}
       render={() => {
-        if (isPrivate === !!ong) {
+        if (isPrivate === !!token) {
           return <Component />
         }
 
