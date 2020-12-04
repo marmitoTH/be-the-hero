@@ -42,7 +42,7 @@ const AuthProvider: React.FC = ({ children }) => {
         const { token, ong } = response.data
 
         localStorage.setItem('@be-the-hero/token', token)
-        localStorage.setItem('@be-the-hero/ong', token)
+        localStorage.setItem('@be-the-hero/ong', JSON.stringify(ong))
 
         setAuth({ token, ong })
       })

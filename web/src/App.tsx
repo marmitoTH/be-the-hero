@@ -1,18 +1,41 @@
 import React from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
+import AuthRoute from './components/AuthRoute'
+import { BrowserRouter } from 'react-router-dom'
 import Home from './pages/Home'
 import SignUp from './pages/SignUp'
 import Dashboard from './pages/Dashboard'
 import Register from './pages/Register'
 import GlobalStyles from './assets/styles/global'
+import { AuthProvider } from './hooks/auth'
 
 export const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <Route path='/' exact component={Home} />
-      <Route path='/cadastrar' component={SignUp} />
-      <Route path='/dashboard' component={Dashboard} />
-      <Route path='/cadastrar-caso' component={Register} />
+      <AuthProvider>
+        <AuthRoute
+          path='/'
+          exact
+          redirectTo='/dashboard'
+          component={Home}
+        />
+        <AuthRoute
+          path='/cadastrar'
+          redirectTo='/dashboard'
+          component={SignUp}
+        />
+        <AuthRoute
+          path='/dashboard'
+          isPrivate
+          redirectTo='/'
+          component={Dashboard}
+        />
+        <AuthRoute
+          path='/cadastrar-caso'
+          isPrivate
+          redirectTo='/'
+          component={Register}
+        />
+      </AuthProvider>
       <GlobalStyles />
     </BrowserRouter>
   )

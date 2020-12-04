@@ -2,6 +2,7 @@ import React from 'react'
 import { FiPower } from 'react-icons/fi'
 import logo from '../../assets/images/logo.svg'
 import Case from '../../components/Case'
+import { useAuth } from '../../hooks/auth'
 
 import {
   Container,
@@ -17,6 +18,8 @@ import {
 } from './styles'
 
 const Dashboard: React.FC = () => {
+  const { signOut } = useAuth()
+
   return (
     <Container>
       <Header>
@@ -26,7 +29,10 @@ const Dashboard: React.FC = () => {
         </HeaderLeft>
         <HedaerRight>
           <Register to='/cadastrar-caso'>Cadastrar novo caso</Register>
-          <SignOut type='button'>
+          <SignOut
+            type='button'
+            onClick={() => signOut()}
+          >
             <FiPower />
           </SignOut>
         </HedaerRight>
