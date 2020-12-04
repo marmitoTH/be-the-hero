@@ -36,7 +36,7 @@ export const Main = styled.div`
   }
 `
 
-export const Form = styled.div`
+export const Form = styled.form`
   @media (min-width: 1000px) {
     max-width: 44.8rem;
   }

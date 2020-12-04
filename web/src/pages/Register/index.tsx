@@ -1,5 +1,8 @@
-import React from 'react'
-//import { useForm } from 'react-hook-form'
+import React, { useCallback } from 'react'
+import api from '../../services/api'
+import { useAuth } from '../../hooks/auth'
+import { useForm } from 'react-hook-form'
+import { useHistory } from 'react-router-dom'
 import { FiArrowLeft } from 'react-icons/fi'
 import Anchor from '../../components/Anchor'
 import TextField from '../../components/TextField'
@@ -19,8 +22,33 @@ import {
   AnchorContainer
 } from './styles'
 
+interface FormData {
+  title: string
+  description: string
+  value: number
+}
+
 const Register: React.FC = () => {
-  //const {register, handleSubmit} = useForm()
+  const { token } = useAuth()
+  const history = useHistory()
+  const { register, handleSubmit } = useForm<FormData>()
+
+  const onSubmit = useCallback(async (data: FormData) => {
+    const { title, description, value } = data
+    await api.post('/incidents', {
+      title,
+      description,
+      value
+    }, {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    }).then(response => {
+      if (response.status === 201) {
+        history.push('/dashboard')
+      }
+    }).catch(() => { })
+  }, [history, token])
 
   return (
     <Container>
@@ -33,12 +61,48 @@ const Register: React.FC = () => {
             <Anchor to='/dashboard' icon={FiArrowLeft}>Voltar para home</Anchor>
           </AnchorContainer>
         </Main>
-        <Form>
-          <TextField placeholder='Título do caso' />
-          <TextArea placeholder='Descrição' />
-          <TextField placeholder='Valor em reais' />
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <TextField
+            ref={register({
+              required: true,
+              maxLength: 64,
+            })}
+            name='title'
+            placeholder='Título do caso'
+            required
+            maxLength={64}
+          />
+          <TextArea
+            ref={register({
+              required: true,
+              minLength: 10,
+              maxLength: 256
+            })}
+            name='description'
+            placeholder='Descrição'
+            required
+            minLength={10}
+            maxLength={256}
+          />
+          <TextField
+            ref={register({
+              required: true,
+              minLength: 2,
+              maxLength: 9
+            })}
+            name='value'
+            placeholder='Valor em reais'
+            required
+            minLength={2}
+            maxLength={9}
+          />
           <ButtonsContainer>
-            <Button secondary>Cancelar</Button>
+            <Button
+              type='button'
+              secondary
+            >
+              Cancelar
+            </Button>
             <Button>Cadastrar</Button>
           </ButtonsContainer>
         </Form>

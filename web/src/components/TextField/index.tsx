@@ -3,8 +3,10 @@ import { Input } from './styles'
 
 type Props = React.InputHTMLAttributes<HTMLInputElement>
 
-const TextField: React.FC<Props> = (props) => (
-  <Input {...props} />
+const TextField = React.forwardRef<HTMLInputElement, Props>(
+  (props, ref) => (
+    <Input ref={ref} {...props} />
+  )
 )
 
 export default TextField
