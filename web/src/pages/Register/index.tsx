@@ -33,6 +33,10 @@ const Register: React.FC = () => {
   const history = useHistory()
   const { register, handleSubmit } = useForm<FormData>()
 
+  const onCancel = useCallback(() => {
+    history.push('/dashboard')
+  }, [history])
+
   const onSubmit = useCallback(async (data: FormData) => {
     const { title, description, value } = data
 
@@ -99,8 +103,11 @@ const Register: React.FC = () => {
           />
           <ButtonsContainer>
             <Button
-              type='button'
               secondary
+              type='button'
+              onClick={() => {
+                onCancel()
+              }}
             >
               Cancelar
             </Button>
