@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useCallback } from 'react'
+import api from '../../services/api'
+import { useHistory } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 import { FiArrowLeft } from 'react-icons/fi'
 import Button from '../../components/Button'
 import TextField from '../../components/TextField'
@@ -13,10 +16,39 @@ import {
   Logo,
   Title,
   Description,
+  LocationContainer,
   AnchorContainer
 } from './styles'
 
+interface FormData {
+  name: string
+  email: string
+  whatsapp: string
+  city: string
+  uf: string
+}
+
 const SignUp: React.FC = () => {
+  const history = useHistory()
+  const { register, handleSubmit } = useForm<FormData>()
+
+  const onSubmit = useCallback(async (data: FormData) => {
+    const { name, email, whatsapp, city, uf } = data
+
+    await api.post('/ongs', {
+      name,
+      email,
+      whatsapp,
+      city,
+      uf
+    }).then(response => {
+      if (response.status === 201) {
+        console.log(response.data)
+        history.push('/')
+      }
+    }).catch(() => { })
+  }, [history])
+
   return (
     <Container>
       <Wrapper>
@@ -28,11 +60,62 @@ const SignUp: React.FC = () => {
             <Anchor to='/' icon={FiArrowLeft}>Voltar para o logon</Anchor>
           </AnchorContainer>
         </Main>
-        <Form>
-          <TextField placeholder='Nome da ONG' />
-          <TextField placeholder='Email' />
-          <TextField placeholder='WhatsApp' />
-          <TextField placeholder='Cidade' />
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <TextField
+            ref={register}
+            name='name'
+            placeholder='Nome da ONG'
+          />
+          <TextField
+            ref={register({
+              required: true,
+              pattern: /.+@.+/,
+              maxLength: 128
+            })}
+            name='email'
+            type='email'
+            placeholder='Email'
+            required
+            maxLength={128}
+          />
+          <TextField
+            ref={register({
+              required: true,
+              minLength: 8,
+              maxLength: 32
+            })}
+            name='whatsapp'
+            placeholder='WhatsApp'
+            required
+            minLength={8}
+            maxLength={32}
+          />
+          <LocationContainer>
+            <TextField
+              ref={register({
+                required: true,
+                minLength: 3,
+                maxLength: 64
+              })}
+              name='city'
+              placeholder='Cidade'
+              required
+              minLength={3}
+              maxLength={64}
+            />
+            <TextField
+              ref={register({
+                required: true,
+                minLength: 2,
+                maxLength: 2
+              })}
+              name='uf'
+              placeholder='UF'
+              required
+              minLength={2}
+              maxLength={2}
+            />
+          </LocationContainer>
           <Button>Cadastrar</Button>
         </Form>
       </Wrapper>

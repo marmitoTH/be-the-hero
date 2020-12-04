@@ -41,7 +41,7 @@ export const Form = styled.form`
     margin-top: 1.6rem;
   }
 
-  input + input {
+  > input + input {
     margin-top: .8rem;
   }
 
@@ -76,6 +76,13 @@ export const Description = styled.p`
     max-width: 38.4rem;
     text-align: left;
   }
+`
+
+export const LocationContainer = styled.section`
+  display: grid;
+  grid-gap: .8rem;
+  grid-template-columns: 5fr 1fr;
+  margin-top: .8rem;
 `
 
 export const AnchorContainer = styled.div`

@@ -24,7 +24,6 @@ const AuthRoute: React.FC<Props> = ({
           return <Component />
         }
 
-        console.log('redirecting')
         return <Redirect to={{ pathname: redirectTo }} />
       }}
     />
