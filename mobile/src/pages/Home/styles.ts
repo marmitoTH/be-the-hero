@@ -32,6 +32,10 @@ export const Description = styled.Text`
   line-height: 30px;
 `
 
+export const Incidents = styled.View`
+  margin-top: 32px;
+`
+
 export const Bold = styled.Text`
   font-weight: bold;
 `
