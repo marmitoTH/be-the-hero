@@ -1,5 +1,7 @@
 import React from 'react'
+import { Linking } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import * as MailComposer from 'expo-mail-composer'
 import Button from '../../components/Button'
 
 import {
@@ -18,10 +20,23 @@ import {
 
 const Detail = () => {
   const navigation = useNavigation()
+  const message = `Olá ONG, estou entrando em contato pois gostaria de ajudar no caso "CASO" com o valor de R$ 120,00!`
   const logo = require('../../assets/images/logo/logo.png')
 
   const NavigateToHome = () => {
-    navigation.navigate('Home')
+    navigation.goBack()
+  }
+
+  const SendMail = () => {
+    MailComposer.composeAsync({
+      subject: `Herói do caso: Cadelinha atropelada`,
+      recipients: [`apad@mail.com`],
+      body: message
+    })
+  }
+
+  const SendWhatsApp = () => {
+    Linking.openURL(`whatsapp://send?phone=5586998110028&text=${message}`)
   }
 
   return (
@@ -54,8 +69,18 @@ const Detail = () => {
           Entre em contato:
         </Text>
         <Actions>
-          <Button style={{ minWidth: '47%' }} onPress={() => { }}>WhatsApp</Button>
-          <Button style={{ minWidth: '47%' }} onPress={() => { }}>E-mail</Button>
+          <Button
+            style={{ minWidth: '48%' }}
+            onPress={SendWhatsApp}
+          >
+            WhatsApp
+          </Button>
+          <Button
+            style={{ minWidth: '48%' }}
+            onPress={SendMail}
+          >
+            E-mail
+          </Button>
         </Actions>
       </Footer>
     </Container>
