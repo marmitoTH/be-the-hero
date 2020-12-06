@@ -1,4 +1,5 @@
 import React from 'react'
+import formatCurrency from '../../utils/formatCurrency'
 
 import {
   Container,
@@ -30,7 +31,7 @@ const Incident: React.FC<Props> = ({
       <Title>CASO:</Title>
       <Text>{title}</Text>
       <Title>VALOR:</Title>
-      <Text>{value}</Text>
+      <Text>{formatCurrency(value)}</Text>
       <Button onPress={() => onPress()}>
         <Details>Ver mais detalhes</Details>
         <DetailsIcon name='arrow-right' />

@@ -3,6 +3,7 @@ import { Linking } from 'react-native'
 import { StackParams } from '../../Router'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 import * as MailComposer from 'expo-mail-composer'
+import formatCurrency from '../../utils/formatCurrency'
 import Button from '../../components/Button'
 
 import {
@@ -25,7 +26,9 @@ const Detail = () => {
   const navigation = useNavigation()
   const route = useRoute<DetailProps>()
   const incident = route.params.incident
-  const message = `Olá ONG, estou entrando em contato pois gostaria de ajudar no caso "CASO" com o valor de R$ 120,00!`
+  const message = `Olá ${incident.ong.name}, estou entrando em ` +
+    `contato pois gostaria de ajudar no caso "${incident.title}" ` +
+    `com o valor de R$ ${formatCurrency(incident.value)}!`
   const logo = require('../../assets/images/logo/logo.png')
 
   const NavigateToHome = () => {
@@ -33,17 +36,16 @@ const Detail = () => {
   }
 
   const SendMail = () => {
-    console.log(incident.ong.email)
     MailComposer.composeAsync({
-      subject: `Herói do caso: Cadelinha atropelada`,
+      subject: `Herói do caso: ${incident.title}`,
       recipients: [incident.ong.email],
       body: message
     })
   }
 
   const SendWhatsApp = () => {
-    console.log(incident.ong.whatsapp)
-    Linking.openURL(`whatsapp://send?phone=${incident.ong.whatsapp}&text=${message}`)
+    Linking.openURL(`whatsapp://send?phone=${incident.ong.whatsapp}` +
+      `&text=${message}`)
   }
 
   return (
@@ -62,7 +64,9 @@ const Detail = () => {
         <Title>Descrição:</Title>
         <Text>{incident.description}</Text>
         <Title>VALOR:</Title>
-        <Text style={{ marginBottom: 0 }}>{incident.value}</Text>
+        <Text style={{ marginBottom: 0 }}>
+          {formatCurrency(incident.value)}
+        </Text>
       </Main>
       <Footer>
         <HeroTitle>Salve o dia!</HeroTitle>
