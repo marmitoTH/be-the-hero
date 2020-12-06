@@ -1,6 +1,7 @@
 import React from 'react'
 import { Linking } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
+import { StackParams } from '../../Router'
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 import * as MailComposer from 'expo-mail-composer'
 import Button from '../../components/Button'
 
@@ -18,8 +19,12 @@ import {
   HeroTitle
 } from './styles'
 
+type DetailProps = RouteProp<StackParams, 'Detail'>
+
 const Detail = () => {
   const navigation = useNavigation()
+  const route = useRoute<DetailProps>()
+  const incident = route.params.incident
   const message = `Olá ONG, estou entrando em contato pois gostaria de ajudar no caso "CASO" com o valor de R$ 120,00!`
   const logo = require('../../assets/images/logo/logo.png')
 
@@ -28,15 +33,17 @@ const Detail = () => {
   }
 
   const SendMail = () => {
+    console.log(incident.ong.email)
     MailComposer.composeAsync({
       subject: `Herói do caso: Cadelinha atropelada`,
-      recipients: [`apad@mail.com`],
+      recipients: [incident.ong.email],
       body: message
     })
   }
 
   const SendWhatsApp = () => {
-    Linking.openURL(`whatsapp://send?phone=5586998110028&text=${message}`)
+    console.log(incident.ong.whatsapp)
+    Linking.openURL(`whatsapp://send?phone=${incident.ong.whatsapp}&text=${message}`)
   }
 
   return (
@@ -49,13 +56,13 @@ const Detail = () => {
       </Header>
       <Main>
         <Title>ONG:</Title>
-        <Text>APAD</Text>
+        <Text>{incident.ong.name}</Text>
         <Title>CASO:</Title>
-        <Text>Cachorrinha atropelada</Text>
+        <Text>{incident.title}</Text>
         <Title>Descrição:</Title>
-        <Text>A cadelinha Jolie foi atropelada por um carro no bairro Santana e teve que passar por uma cirurgia às pressas.</Text>
+        <Text>{incident.description}</Text>
         <Title>VALOR:</Title>
-        <Text style={{ marginBottom: 0 }}>R$ 120,00</Text>
+        <Text style={{ marginBottom: 0 }}>{incident.value}</Text>
       </Main>
       <Footer>
         <HeroTitle>Salve o dia!</HeroTitle>
