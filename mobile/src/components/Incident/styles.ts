@@ -1,35 +1,39 @@
 import styled from 'styled-components/native'
+import { Feather } from '@expo/vector-icons'
 
 export const Container = styled.View`
+  padding: 24px;
   border-radius: 8px;
-  background: #FFFFFF;
+  background: #fff;
   margin-bottom: 16px;
-`
-
-export const Main = styled.View`
-  padding: 24px;
-`
-
-export const Footer = styled.View`
-  padding: 24px;
-  border-top-width: 1px;
-  border-top-color: #F0F0F5;
 `
 
 export const Title = styled.Text`
   color: #41414D;
   font-size: 14px;
   font-weight: bold;
-  margin-bottom: 10px;
 `
 
 export const Text = styled.Text`
-  color: #737380;
+  margin-top: 8px;
+  margin-bottom: 24px;
   font-size: 15px;
+  color: #737380;
 `
 
-export const FooterText = styled.Text`
-  color: #E02041;
+export const Button = styled.TouchableOpacity`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`
+
+export const Details = styled.Text`
+  color: #e02041;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: bold;
+`
+
+export const DetailsIcon = styled(Feather)`
+  color: #e02041;
+  font-size: 16px;
 `

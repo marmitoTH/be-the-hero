@@ -1,5 +1,4 @@
 import React from 'react'
-import { ScrollView } from 'react-native-gesture-handler'
 import Incident from '../../components/Incident'
 
 import {
@@ -13,27 +12,26 @@ import {
   Bold
 } from './styles'
 
-
 const Home = () => {
   const logo = require('../../assets/images/logo/logo.png')
 
   return (
-    <ScrollView>
-      <Container>
-        <Header>
-          <Logo source={logo} />
-          <Info>Total de <Bold>43 casos</Bold></Info>
-        </Header>
-        <Welcome>Bem-vindo!</Welcome>
-        <Description>Escolha um dos casos abaixo e salve o dia.</Description>
-        <Incidents>
+    <Container>
+      <Header>
+        <Logo source={logo} />
+        <Info>Total de <Bold>43 casos</Bold></Info>
+      </Header>
+      <Welcome>Bem-vindo!</Welcome>
+      <Description>Escolha um dos casos abaixo e salve o dia.</Description>
+      <Incidents
+        data={[1, 2, 3, 4, 5]}
+        showsVerticalScrollIndicator={false}
+        keyExtractor={incident => String(incident)}
+        renderItem={() => (
           <Incident />
-          <Incident />
-          <Incident />
-          <Incident />
-        </Incidents>
-      </Container>
-    </ScrollView>
+        )}
+      />
+    </Container>
   )
 }
 
