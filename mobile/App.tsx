@@ -6,7 +6,7 @@ export default function App() {
   return (
     <>
       <Router />
-      <StatusBar style="auto" />
+      <StatusBar style='dark' />
     </>
   )
 }
