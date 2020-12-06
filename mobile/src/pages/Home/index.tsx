@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 import Incident from '../../components/Incident'
 
 import {
@@ -13,7 +14,12 @@ import {
 } from './styles'
 
 const Home = () => {
+  const navigation = useNavigation()
   const logo = require('../../assets/images/logo/logo.png')
+
+  const NavigateToDetail = () => {
+    navigation.navigate('Detail')
+  }
 
   return (
     <Container>
@@ -28,7 +34,7 @@ const Home = () => {
         showsVerticalScrollIndicator={false}
         keyExtractor={incident => String(incident)}
         renderItem={() => (
-          <Incident />
+          <Incident onPress={NavigateToDetail} />
         )}
       />
     </Container>

@@ -9,7 +9,11 @@ import {
   DetailsIcon
 } from './styles'
 
-const Incident = () => {
+interface Props {
+  onPress(): void
+}
+
+const Incident: React.FC<Props> = ({ onPress }) => {
   return (
     <Container>
       <Title>ONG:</Title>
@@ -18,7 +22,7 @@ const Incident = () => {
       <Text>Cachorrinha atropelada</Text>
       <Title>VALOR:</Title>
       <Text>R$ 120,00</Text>
-      <Button>
+      <Button onPress={() => onPress()}>
         <Details>Ver mais detalhes</Details>
         <DetailsIcon name='arrow-right' />
       </Button>
