@@ -1,4 +1,5 @@
 import React from 'react'
+import { ScrollView } from 'react-native-gesture-handler'
 import Incident from '../../components/Incident'
 
 import {
@@ -12,10 +13,10 @@ import {
   Bold
 } from './styles'
 
-import logo from '../../../assets/images/logo/logo.png'
-import { ScrollView } from 'react-native-gesture-handler'
 
 const Home = () => {
+  const logo = require('../../assets/images/logo/logo.png')
+
   return (
     <ScrollView>
       <Container>
