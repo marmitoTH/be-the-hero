@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { fadeIn } from '../../assets/styles/animations'
 import { Link } from 'react-router-dom'
 import { shade } from 'polished'
 
@@ -6,6 +7,7 @@ export const Container = styled.div`
   width: 85vw;
   margin: 0 auto;
   max-width: 112rem;
+  animation: ${fadeIn} 300ms;
 `
 
 export const Header = styled.header`

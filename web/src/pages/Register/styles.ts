@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { fadeIn } from '../../assets/styles/animations'
 
 export const Container = styled.div`
   width: 90vw;
@@ -7,6 +8,7 @@ export const Container = styled.div`
   margin: 0 auto;
   display: flex;
   align-items: center;
+  animation: ${fadeIn} 300ms;
 
   @media (min-width: 1000px) {
     max-width: 1120px;
