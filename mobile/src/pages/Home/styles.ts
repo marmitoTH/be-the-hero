@@ -2,6 +2,7 @@ import styled from 'styled-components/native'
 import Constants from 'expo-constants'
 
 export const Container = styled.View`
+  flex: 1;
   padding: 24px;
   margin-top: ${Constants.statusBarHeight}px;
 `
@@ -36,7 +37,6 @@ export const Description = styled.Text`
 
 export const Incidents = styled.FlatList`
   margin-top: 32px;
-  margin-bottom: 180px;
 `
 
 export const Bold = styled.Text`
