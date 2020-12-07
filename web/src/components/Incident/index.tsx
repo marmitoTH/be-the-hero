@@ -1,5 +1,6 @@
 import React from 'react'
 import { FiTrash2 } from 'react-icons/fi'
+import formatCurrency from '../../utils/formatCurrency'
 
 import {
   Container,
@@ -29,7 +30,7 @@ const Incident: React.FC<Props> = (props) => (
     </Section>
     <Section>
       <Title>Valor:</Title>
-      <Text>{props.value}</Text>
+      <Text>{formatCurrency(props.value)}</Text>
     </Section>
     <Delete
       type='button'
