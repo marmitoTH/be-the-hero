@@ -24,8 +24,8 @@ The idea behind the application is very simple, philanthropic foundations, or NG
 ## 👀 Demo
 
 <p align='center'>
-    <img src='https://user-images.githubusercontent.com/25598040/101418892-9ab5f800-38cd-11eb-9060-c929a77f4748.gif' />
-    <img src='https://user-images.githubusercontent.com/25598040/101419254-61ca5300-38ce-11eb-8257-f81be517a8d5.gif' />
+    <img src='https://user-images.githubusercontent.com/25598040/101418892-9ab5f800-38cd-11eb-9060-c929a77f4748.gif' /></br>
+    <img src='https://user-images.githubusercontent.com/25598040/101419254-61ca5300-38ce-11eb-8257-f81be517a8d5.gif' /></br>
     <img src='https://user-images.githubusercontent.com/25598040/101421778-e1a6ec00-38d3-11eb-9678-82651a756e7d.gif' />
 </p>
 
