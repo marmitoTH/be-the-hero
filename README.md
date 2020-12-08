@@ -5,7 +5,7 @@
 <p align='center'>
     <img src="https://img.shields.io/badge/Backend-Node.js-green?style=flat-square&link=https://nodejs.org/">
     <img src="https://img.shields.io/badge/Frontend-React-blue?style=flat-square&link=https://reactjs.org/">
-    <img src="https://img.shields.io/badge/Frontend-React Native-blue?style=flat-square&link=https://reactjs.org/">
+    <img src="https://img.shields.io/badge/Frontend-React Native-blue?style=flat-square&link=https://reactnative.dev/">
     <img src="https://img.shields.io/badge/Database-PostgreSQL-blue?style=flat-square&link=https://www.postgresql.org/">
     <img src="https://img.shields.io/badge/Lucas-social-green?logo=linkedin&style=social&link=https://www.linkedin.com/in/lucas-rodrigues-985918197/">
 </p>
@@ -22,6 +22,12 @@ Be The Hero is an application originally developed in the OmniStack Weak 11.0 by
 The idea behind the application is very simple, philanthropic foundations, or NGOs, can create accounts through the web app providing contact information to register new incidents. The mobile app allows general users to list these incidents and get in touch with the foundations through WhatsApp or E-mail and provide support to the incidents.
 
 ## 👀 Demo
+
+<p align='center'>
+    <img src='https://user-images.githubusercontent.com/25598040/101418892-9ab5f800-38cd-11eb-9060-c929a77f4748.gif' />
+    <img src='https://user-images.githubusercontent.com/25598040/101419254-61ca5300-38ce-11eb-8257-f81be517a8d5.gif' />
+    <img src='https://user-images.githubusercontent.com/25598040/101421778-e1a6ec00-38d3-11eb-9678-82651a756e7d.gif' />
+</p>
 
 ## 🔧 Made With
 
@@ -45,7 +51,7 @@ The idea behind the application is very simple, philanthropic foundations, or NG
 
 ### Frontend (MOBILE)
 
-- [expo](https://expo.io/)
+- [Expo](https://expo.io/)
 - [React Native](https://reactnative.dev/)
 - [React Navigation](https://reactnavigation.org/)
 - [Axios](https://www.npmjs.com/package/axios)
